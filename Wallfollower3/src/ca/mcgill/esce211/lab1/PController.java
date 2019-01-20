@@ -3,6 +3,7 @@ package ca.mcgill.esce211.lab1;
 public class PController implements UltrasonicController {
 
 	private static final int FILTER_OUT = 20;
+	private static final int DISTANCE_THRESHOLD = 80;
 	private final int bandCenter;
 	private final int bandWidth;
 	private final int maxDelta;
@@ -30,11 +31,11 @@ public class PController implements UltrasonicController {
 		// (n.b. this was not included in the Bang-bang controller, but easily
 		// could have).
 		//
-		if (distance >= 255 && filterControl < FILTER_OUT) {
+		if (distance >= DISTANCE_THRESHOLD && filterControl < FILTER_OUT) {
 			// bad value, do not set the distance var, however do increment the
 			// filter value
 			filterControl++;
-		} else if (distance >= 255) {
+		} else if (distance >= DISTANCE_THRESHOLD) {
 			// We have repeated large values, so there must actually be nothing
 			// there: leave the distance alone
 			this.distance = distance;
