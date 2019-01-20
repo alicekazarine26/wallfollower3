@@ -16,7 +16,7 @@ public class WallFollowingLab {
 	private static final int MOTOR_SPEED = 80; // Speed of slower rotating wheel (deg/sec)
 	private static final int BANG_DELTA = 50;
 	private static final int P_MAX_DELTA = 50;
-	private static final float P_FACTOR = 2.0f;
+	private static final float P_FACTOR = 1.5f;
 
 	private static final Port usPort = LocalEV3.get().getPort("S1");
 	public static final EV3LargeRegulatedMotor leftMotor = new EV3LargeRegulatedMotor(LocalEV3.get().getPort("A"));

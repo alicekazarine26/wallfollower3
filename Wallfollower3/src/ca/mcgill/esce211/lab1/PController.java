@@ -7,6 +7,7 @@ public class PController implements UltrasonicController {
 	private final int bandWidth;
 	private final int maxDelta;
 	private final float pFactor;
+	private final int SLEEPINT = 60;
 
 	private int distance;
 	private int filterControl;
@@ -43,6 +44,13 @@ public class PController implements UltrasonicController {
 			// distance alone.
 			filterControl = 0;
 			this.distance = distance;
+			
+		try {
+			Thread.sleep(SLEEPINT);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		}
 
 		int error = bandCenter - distance;
