@@ -69,13 +69,14 @@ public class BangBangController implements UltrasonicController {
 		else {
 			motorController.goStraight();
 		}
-		
+		/*
 		try {
 			Thread.sleep(SLEEPINT);
 		} catch (InterruptedException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		*/
 		
 	}
 

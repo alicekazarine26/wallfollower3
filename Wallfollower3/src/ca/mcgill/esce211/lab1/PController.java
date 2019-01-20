@@ -45,15 +45,9 @@ public class PController implements UltrasonicController {
 			// distance alone.
 			filterControl = 0;
 			this.distance = distance;
+		}
 			
-		try {
-			Thread.sleep(SLEEPINT);
-		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		}
-
+	
 		int error = bandCenter - distance;
 		
 		// out of bounds
@@ -71,6 +65,15 @@ public class PController implements UltrasonicController {
 		else {
 			motorController.goStraight();
 		}
+		/*
+		try {
+			Thread.sleep(SLEEPINT);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		
+		}
+			 */
 	}
 
 	@Override
