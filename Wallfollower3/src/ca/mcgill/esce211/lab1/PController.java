@@ -3,12 +3,12 @@ package ca.mcgill.esce211.lab1;
 public class PController implements UltrasonicController {
 
 	private static final int FILTER_OUT = 20;
-	private static final int DISTANCE_THRESHOLD = 60;
+	private static final int DISTANCE_THRESHOLD = 150;
 	private final int bandCenter;
 	private final int bandWidth;
 	private final int maxDelta;
 	private final float pFactor;
-	private final int SLEEPINT = 60;
+	private final int SLEEPINT = 50;
 
 	private int distance;
 	private int filterControl;

@@ -2,12 +2,12 @@ package ca.mcgill.esce211.lab1;
 
 public class BangBangController implements UltrasonicController {
 
-	private static final int FILTER_OUT = 100;
+	private static final int FILTER_OUT = 20;
 	private static final int DISTANCE_THRESHOLD = 100;
 	private final int bandCenter;
 	private final int bandwidth;
 	private final int BANG_DELTA;
-	private final int SLEEPINT = 40;
+	private final int SLEEPINT = 50;
 	//private final int maxError = 25;
 	
 	private MotorController motorController;
