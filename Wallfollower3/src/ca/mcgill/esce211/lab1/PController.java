@@ -54,8 +54,7 @@ public class PController implements UltrasonicController {
 		
 		// out of bounds
 		if (Math.abs(error) > bandWidth / 2) {
-			int scaledDelta = 50;
-					//Math.abs(Math.min(maxDelta, (int) (error * pFactor)));
+			int scaledDelta = Math.min(maxDelta, Math.abs((int) (error * pFactor)));
 			// too close to the wall
 			if (error >= 0) {
 				motorController.turnRight(scaledDelta);
