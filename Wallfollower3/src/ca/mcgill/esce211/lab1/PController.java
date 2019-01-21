@@ -2,7 +2,7 @@ package ca.mcgill.esce211.lab1;
 
 public class PController implements UltrasonicController {
 
-	private static final int FILTER_OUT = 20;
+	private static final int FILTER_OUT = 30;
 	private static final int DISTANCE_THRESHOLD = 80;
 	private final int bandCenter;
 	private final int bandWidth;
@@ -16,7 +16,7 @@ public class PController implements UltrasonicController {
 	private MotorController motorController;
 
 	public PController(int bandCenter, int bandwidth, int maxDelta, double pFactor, MotorController motorController) {
-		this.bandCenter = 40;
+		this.bandCenter = 45;
 		this.bandWidth = bandwidth;
 		this.filterControl = 0;
 		this.motorController = motorController;
@@ -73,22 +73,22 @@ public class PController implements UltrasonicController {
 			}
 			// too far away from the wall
 			else {
-				motorController.turnLeft(scaledDelta+20);
+				motorController.turnLeft(scaledDelta);
 			}
 		}
 		else {
 			
 			motorController.goStraight();
 		}
-		/*
+		
 		try {
-			Thread.sleep(SLEEPINT);
+			Thread.sleep(30);
 		} catch (InterruptedException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		
 		}
-		 */
+		 
 	}
 
 	@Override
