@@ -3,7 +3,7 @@ package ca.mcgill.esce211.lab1;
 public class PController implements UltrasonicController {
 
 	private static final int FILTER_OUT = 20;
-	private static final int DISTANCE_THRESHOLD = 100;
+	private static final int DISTANCE_THRESHOLD = 150;
 	private final int bandCenter;
 	private final int bandWidth;
 	private final int maxDelta;
@@ -22,10 +22,12 @@ public class PController implements UltrasonicController {
 		this.maxDelta = maxDelta;
 		this.pFactor = pFactor;
 
+		motorController.goStraight();
 	}
 
 	@Override
 	public void processUSData(int distance) {
+		int error;
 
 		// rudimentary filter - toss out invalid samples corresponding to null
 		// signal.
@@ -48,13 +50,14 @@ public class PController implements UltrasonicController {
 		}
 			
 	
-		int error = bandCenter - distance;
+		error = bandCenter - distance;
 		
 		// out of bounds
 		if (Math.abs(error) > bandWidth / 2) {
-			int scaledDelta = Math.abs(Math.min(maxDelta, (int) (error * pFactor)));
+			int scaledDelta = 50;
+					//Math.abs(Math.min(maxDelta, (int) (error * pFactor)));
 			// too close to the wall
-			if (error > 0) {
+			if (error >= 0) {
 				motorController.turnRight(scaledDelta);
 			}
 			// too far away from the wall
@@ -63,6 +66,7 @@ public class PController implements UltrasonicController {
 			}
 		}
 		else {
+			
 			motorController.goStraight();
 		}
 		/*
@@ -73,7 +77,7 @@ public class PController implements UltrasonicController {
 			e.printStackTrace();
 		
 		}
-		*/	 
+		 */
 	}
 
 	@Override

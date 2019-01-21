@@ -8,7 +8,7 @@ public class BangBangController implements UltrasonicController {
 	private final int bandwidth;
 	private final int BANG_DELTA;
 	private final int SLEEPINT = 50;
-	//private final int maxError = 25;
+	
 	
 	private MotorController motorController;
 	

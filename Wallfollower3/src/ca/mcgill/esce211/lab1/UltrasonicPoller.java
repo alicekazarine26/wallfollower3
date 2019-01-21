@@ -33,7 +33,7 @@ public class UltrasonicPoller extends Thread {
       distance = (int) (usData[0] * 100.0); // extract from buffer, cast to int
       cont.processUSData(distance); // now take action depending on value
       try {
-        Thread.sleep(100);
+        Thread.sleep(80);
       } catch (Exception e) {
       } // Poor man's timed sampling
     }
