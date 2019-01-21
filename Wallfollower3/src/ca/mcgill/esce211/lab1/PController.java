@@ -2,8 +2,8 @@ package ca.mcgill.esce211.lab1;
 
 public class PController implements UltrasonicController {
 
-	private static final int FILTER_OUT = 30;
-	private static final int DISTANCE_THRESHOLD = 75;
+	private static final int FILTER_OUT = 20;
+	private static final int DISTANCE_THRESHOLD = 150;
 	private final int bandCenter;
 	private final int bandWidth;
 	private final int maxDelta;
@@ -16,7 +16,7 @@ public class PController implements UltrasonicController {
 	private MotorController motorController;
 
 	public PController(int bandCenter, int bandwidth, int maxDelta, double pFactor, MotorController motorController) {
-		this.bandCenter = 50;
+		this.bandCenter = 30;
 		this.bandWidth = bandwidth;
 		this.filterControl = 0;
 		this.motorController = motorController;
@@ -59,7 +59,7 @@ public class PController implements UltrasonicController {
 			
 //			int scaledDelta = Math.abs((int) (error * pFactor));
 			
-			int scaledDelta = (Math.abs(error)*3);
+			int scaledDelta = (Math.abs(error)*2);
 			
 			if (scaledDelta > maxDelta) {
 				scaledDelta = maxDelta;
