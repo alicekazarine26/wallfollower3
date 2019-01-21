@@ -63,17 +63,17 @@ public class PController implements UltrasonicController {
 //				scaledDelta = maxDelta;
 //			}
 			
-			int scaledDelta = Math.abs(error);
+			int scaledDelta = Math.abs(error) + 20;
 			
-			this.scaledSpeed = scaledDelta;
+			this.scaledSpeed = Math.min(scaledDelta, 50);
 			
 			// too close to the wall
 			if (error >= 0) {
-				motorController.turnRight(scaledDelta + maxDelta);
+				motorController.turnRight(scaledDelta);
 			}
 			// too far away from the wall
 			else {
-				motorController.turnLeft(scaledDelta + maxDelta);
+				motorController.turnLeft(scaledDelta);
 			}
 		}
 		else {
