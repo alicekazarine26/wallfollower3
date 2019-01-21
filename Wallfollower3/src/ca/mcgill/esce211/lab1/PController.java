@@ -2,19 +2,20 @@ package ca.mcgill.esce211.lab1;
 
 public class PController implements UltrasonicController {
 
-	private static final int FILTER_OUT = 30;
-	private static final int DISTANCE_THRESHOLD = 150;
+	private static final int FILTER_OUT = 20;
+	private static final int DISTANCE_THRESHOLD = 75;
 	private final int bandCenter;
 	private final int bandWidth;
 	private final int maxDelta;
-	private final float pFactor;
-	private final int SLEEPINT = 50;
+	private final double pFactor;
+//	private final int SLEEPINT = 50;
 
 	private int distance;
+	private int scaledSpeed;
 	private int filterControl;
 	private MotorController motorController;
 
-	public PController(int bandCenter, int bandwidth, int maxDelta, float pFactor, MotorController motorController) {
+	public PController(int bandCenter, int bandwidth, int maxDelta, double pFactor, MotorController motorController) {
 		this.bandCenter = bandCenter;
 		this.bandWidth = bandwidth;
 		this.filterControl = 0;
@@ -54,14 +55,25 @@ public class PController implements UltrasonicController {
 		
 		// out of bounds
 		if (Math.abs(error) > bandWidth / 2) {
-			int scaledDelta = Math.min(maxDelta, Math.abs((int) (error * pFactor)));
+//			int scaledDelta = Math.min(maxDelta, Math.abs((int) (error * pFactor)));
+			
+//			int scaledDelta = Math.abs((int) (error * pFactor));
+			
+//			if (scaledDelta > maxDelta) {
+//				scaledDelta = maxDelta;
+//			}
+			
+			int scaledDelta = Math.abs(error);
+			
+			this.scaledSpeed = scaledDelta;
+			
 			// too close to the wall
 			if (error >= 0) {
-				motorController.turnRight(scaledDelta);
+				motorController.turnRight(scaledDelta + maxDelta);
 			}
 			// too far away from the wall
 			else {
-				motorController.turnLeft(scaledDelta);
+				motorController.turnLeft(scaledDelta + maxDelta);
 			}
 		}
 		else {
@@ -81,7 +93,7 @@ public class PController implements UltrasonicController {
 
 	@Override
 	public int readUSDistance() {
-		return this.distance;
+		return this.scaledSpeed;
 	}
 
 }
