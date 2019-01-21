@@ -81,6 +81,7 @@ public class WallFollowingLab {
 		}
 
 		// Start the poller and printer threads
+		motorController.goStraight();
 		usPoller.start();
 		printer.start();
 

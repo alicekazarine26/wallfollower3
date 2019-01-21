@@ -23,7 +23,7 @@ public class BangBangController implements UltrasonicController {
 		this.BANG_DELTA = bangDelta;
 		
 		
-		motorController.goStraight();
+//		motorController.goStraight();
 	}
 
 	@Override

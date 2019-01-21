@@ -22,7 +22,7 @@ public class PController implements UltrasonicController {
 		this.maxDelta = maxDelta;
 		this.pFactor = pFactor;
 
-		motorController.goStraight();
+//		motorController.goStraight();
 	}
 
 	@Override
