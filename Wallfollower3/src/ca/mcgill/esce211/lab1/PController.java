@@ -3,7 +3,7 @@ package ca.mcgill.esce211.lab1;
 public class PController implements UltrasonicController {
 
 	private static final int FILTER_OUT = 20;
-	private static final int DISTANCE_THRESHOLD = 150;
+	private static final int DISTANCE_THRESHOLD = 100;
 	private final int bandCenter;
 	private final int bandWidth;
 	private final int maxDelta;
@@ -55,11 +55,11 @@ public class PController implements UltrasonicController {
 		
 		// out of bounds
 		if (Math.abs(error) > bandWidth / 2) {
-//			int scaledDelta = Math.min(maxDelta, Math.abs((int) (error * pFactor)));
+		//	int scaledDelta = Math.min(maxDelta, Math.abs( error * pFactor)));
 			
 //			int scaledDelta = Math.abs((int) (error * pFactor));
 			
-			int scaledDelta = (Math.abs(error)*2);
+			int scaledDelta = (int) (Math.abs(error*2.5));
 			
 			if (scaledDelta > maxDelta) {
 				scaledDelta = maxDelta;
@@ -69,11 +69,11 @@ public class PController implements UltrasonicController {
 			
 			// too close to the wall
 			if (error >= 0) {
-				motorController.turnRight(scaledDelta*2);
+				motorController.turnRight(scaledDelta);
 			}
 			// too far away from the wall
 			else {
-				motorController.turnLeft(scaledDelta*3);
+				motorController.turnLeft(scaledDelta);
 			}
 		}
 		else {

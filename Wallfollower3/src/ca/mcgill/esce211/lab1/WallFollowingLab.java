@@ -15,7 +15,7 @@ public class WallFollowingLab {
 	private static final int bandWidth = 3; // Width of dead band (cm)
 	private static final int MOTOR_SPEED = 220; // Speed of slower rotating wheel (deg/sec)
 	private static final int BANG_DELTA = 70;
-	private static final int P_MAX_DELTA = 50;
+	private static final int P_MAX_DELTA = 70;
 	private static final double P_FACTOR = 1.2f;
 
 	private static final Port usPort = LocalEV3.get().getPort("S1");
